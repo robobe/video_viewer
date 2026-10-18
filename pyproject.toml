@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "video-viewer"
+version = "0.1.0"
+description = "Live Bullet ZMQ TCP and shared-memory image viewer"
+requires-python = ">=3.12"
+dependencies = ["bullet-msgs", "opencv-python>=4.10,<5", "numpy>=2,<3"]
+
+[project.scripts]
+video-viewer = "video_viewer.main:main"
+
+[dependency-groups]
+dev = ["pytest>=9,<10"]
+
+[tool.uv.sources]
+bullet-msgs = { path = "../bullet_msgs", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
